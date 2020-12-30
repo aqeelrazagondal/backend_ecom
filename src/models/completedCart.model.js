@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose'),
   Schema = mongoose.Schema;
-
+const { toJSON, paginate } = require('./plugins');
 let UserSchema = new Schema(
   {
     _id: {

@@ -31,6 +31,16 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    brands: {
+      type: [String],
+    },
+    variants: [
+      {
+        color: {
+          type: String,
+        },
+      },
+    ],
     _vendorID: {
       type: Schema.Types.ObjectId,
       ref: 'Seller',
