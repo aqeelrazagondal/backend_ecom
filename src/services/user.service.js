@@ -43,8 +43,8 @@ const getUserById = async (id) => {
  * @param {string} email
  * @returns {Promise<User>}
  */
-const getUserByEmail = async (email) => {
-  return User.findOne({ email });
+const getUserByEmail = async (email, role) => {
+  return User.findOne({ email, role });
 };
 
 /**

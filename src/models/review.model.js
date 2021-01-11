@@ -8,6 +8,9 @@ const commentSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
+    rating: {
+      type: Number,
+    },
     _userID: {
       type: Schema.Types.ObjectId,
       required: true,

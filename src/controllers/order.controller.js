@@ -4,9 +4,10 @@ const catchAsync = require('../utils/catchAsync');
 const { User } = require('../models/');
 const { orderService } = require('../services');
 const orderENUMS = {
-  PENDING: 'PENDING',
-  DELIVERED: 'DELIVERED',
-  DISPATCHED: 'DISPATCHED',
+  NEW: 'NEW',
+  PROCESS: 'PROCESS',
+  SHIPPING: 'SHIPPING',
+  SUCCESS: 'SUCCESS',
 };
 const createOrder = catchAsync(async (req, res) => {
   let user;
@@ -24,11 +25,10 @@ const createOrder = catchAsync(async (req, res) => {
       email: req.body.personalInfo.email,
     });
   }
-  console.log(user);
   const order = await orderService.createOrder({
     _userID: user.id,
     products: req.body.products,
-    status: orderENUMS.PENDING,
+    status: orderENUMS.NEW,
     cost: req.body.cost,
     mobileNo: user.phone,
     orderNotes: req.body.orderNotes,

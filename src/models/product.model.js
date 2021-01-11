@@ -10,7 +10,6 @@ const productSchema = mongoose.Schema(
     },
     content: {
       type: Schema.Types.Mixed,
-      required: true,
     },
     category: {
       type: [String],
@@ -20,14 +19,26 @@ const productSchema = mongoose.Schema(
       type: [String],
       require: false,
     },
+    artWorkMedium: {
+      type: [String],
+      require: false,
+    },
     price: {
       type: Number,
     },
-    old_price: {
+    oldPrice: {
       type: Number,
       default: 0,
     },
+    code: {
+      type: String,
+      unique: true,
+    },
     description: {
+      type: Schema.Types.Mixed,
+      required: true,
+    },
+    additionalInformation: {
       type: String,
       required: true,
     },
@@ -49,17 +60,17 @@ const productSchema = mongoose.Schema(
     images: {
       type: [String],
     },
-    comments: [
+    reviews: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Comment',
+        ref: 'Review',
       },
     ],
     rating: {
       type: Number,
       Default: 0,
     },
-    size: {
+    sizes: {
       type: [String],
     },
     QualityType: {
@@ -85,9 +96,16 @@ const productSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    allStockQuantity: {
+      type: [Number],
+    },
     quantity: {
       type: Number,
       default: 50,
+    },
+    allStockInput: {
+      type: [Number],
+      default: 0,
     },
   },
   {
